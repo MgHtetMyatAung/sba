@@ -19,7 +19,7 @@ export default function Homepage() {
             <Input
               type="text"
               placeholder="Search hostels, jobs, or businesses"
-              className="flex-grow"
+              className="flex-grow bg-white"
             />
             <Button className="ml-2">
               <Search className="mr-2 h-4 w-4" /> Search

@@ -2,6 +2,8 @@
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
+  SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
@@ -29,7 +31,10 @@ export default function MobileMenu() {
           </Button>
         </SheetTrigger>
         <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-          <SheetTitle></SheetTitle>
+          <SheetHeader>
+            <SheetTitle></SheetTitle>
+            <SheetDescription></SheetDescription>
+          </SheetHeader>
           <nav className="flex flex-col space-y-4 mt-8">
             <NavLinks />
             <Button variant="outline" className="w-full">
