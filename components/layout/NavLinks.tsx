@@ -9,8 +9,8 @@ export const NavLinks = () => (
     <Link href="/jobs" className="text-gray-600 hover:text-blue-600">
       Jobs
     </Link>
-    <Link href="/businesses" className="text-gray-600 hover:text-blue-600">
-      Businesses
+    <Link href="/services" className="text-gray-600 hover:text-blue-600">
+      Services
     </Link>
   </>
 );

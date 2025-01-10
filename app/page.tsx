@@ -9,10 +9,10 @@ export default function Homepage() {
     <div className="flex-grow">
       <section className="bg-blue-50 py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className=" text-xl lg:text-5xl font-bold mb-6">
+          <h1 className=" text-xl font-bold mb-6">
             Connect, Stay, Work, and Grow
           </h1>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className=" text-lg md:text-xl text-gray-600 mb-8">
             Your all-in-one platform for hostels, jobs, and business networking
           </p>
           <div className="max-w-2xl mx-auto lg:flex space-y-3 lg:space-y-0">
@@ -30,10 +30,10 @@ export default function Homepage() {
 
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-semibold text-center mb-12">
+          <h2 className=" text-xl md:text-3xl font-semibold text-center mb-12">
             Explore Our Services
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
@@ -44,9 +44,11 @@ export default function Homepage() {
                 <p className="text-gray-600">
                   Find comfortable and affordable accommodations worldwide.
                 </p>
-                <Button className="mt-4" variant="outline">
-                  Browse Hostels
-                </Button>
+                <Link href={"/hostels"}>
+                  <Button className="mt-4" variant="outline">
+                    Browse Hostels
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
             <Card>

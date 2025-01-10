@@ -20,6 +20,9 @@
 # production
 /build
 
+# json-server
+/data
+
 # misc
 .DS_Store
 *.pem
