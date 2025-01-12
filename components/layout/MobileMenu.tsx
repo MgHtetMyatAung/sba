@@ -11,6 +11,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { NavLinks } from "./NavLinks";
+import Image from "next/image";
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +28,15 @@ export default function MobileMenu() {
             onClick={toggleMenu}
           >
             <span className="sr-only">Toggle menu</span>
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isOpen ? null : (
+              <Image
+                src={"/icons/menu.png"}
+                width={40}
+                height={40}
+                alt="menu"
+                className=" w-6 h-6"
+              />
+            )}
           </Button>
         </SheetTrigger>
         <SheetContent side="right" className="w-[300px] sm:w-[400px]">
@@ -37,10 +46,6 @@ export default function MobileMenu() {
           </SheetHeader>
           <nav className="flex flex-col space-y-4 mt-8">
             <NavLinks />
-            <Button variant="outline" className="w-full">
-              Log In
-            </Button>
-            <Button className="w-full">Sign Up</Button>
           </nav>
         </SheetContent>
       </Sheet>

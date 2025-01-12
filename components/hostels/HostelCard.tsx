@@ -21,14 +21,14 @@ export default function HostelCard({ hostel }: { hostel: Hostel }) {
             <HostelGridPhoto images={hostel.images} />
           </div>
           <div className="p-6">
-            <h3 className="text-lg font-semibold mb-2">{hostel.description}</h3>
+            <h3 className=" font-semibold mb-2">{hostel.description}</h3>
             <div className="flex items-center text-gray-600 mb-2">
               <MapPin className="h-4 w-4 mr-1" />
               <span>{hostel.location}</span>
             </div>
             <div className="flex items-center justify-between">
-              <div className="text-xl font-bold text-blue-600">
-                {hostel.pricePerMonth}000
+              <div className=" font-bold text-blue-600">
+                {hostel.pricePerMonth}
                 <span> MMK </span>
                 <span className="text-sm font-semibold text-gray-600">
                   / per-month

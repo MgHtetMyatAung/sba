@@ -25,9 +25,11 @@ export default async function Header() {
         </nav>
 
         {/* Desktop Auth Buttons */}
-        <AuthBtn />
 
-        <MobileMenu />
+        <div className="flex items-center gap-4">
+          <AuthBtn />
+          <MobileMenu />
+        </div>
       </div>
     </header>
   );

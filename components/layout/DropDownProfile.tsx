@@ -18,7 +18,7 @@ export function DropDownProfile() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className="h-9 w-9 rounded-lg">
+        <Avatar className="h-9 w-9 rounded-full border">
           <AvatarImage
             src={"/icons/user.png"}
             alt={"user"}

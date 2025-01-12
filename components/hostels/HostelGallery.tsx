@@ -17,7 +17,7 @@ export default function HostelGallery({ images }: { images: string[] }) {
   return (
     <div className="relative aspect-video">
       <Image
-        src={images[currentImage]}
+        src={images[currentImage] || "/imgs/hostel.png"}
         alt={`Product image ${currentImage + 1}`}
         fill
         className="object-cover rounded-md"
