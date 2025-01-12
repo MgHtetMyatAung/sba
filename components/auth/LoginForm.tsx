@@ -2,53 +2,60 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
-import React, { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import { Label } from "../ui/label";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { LoaderCircle } from "lucide-react";
+interface FormData {
+  email: string;
+  password: string;
+}
 
 export default function LoginForm() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleLogin = async (e: FormEvent) => {
-    e.preventDefault();
-    const response = await signIn("credentials", {
-      redirect: false,
-      email: email,
-      password: password,
-    });
+  const { register, handleSubmit } = useForm<FormData>();
 
-    if (response?.ok) {
-      router.push("/"); // Redirect after login
-      router.refresh();
-      toast.success("Login successful");
+  const handleLogin = async (data: FormData) => {
+    try {
+      setIsSubmitting(true);
+      const response = await signIn("credentials", {
+        redirect: false,
+        email: data.email,
+        password: data.password,
+      });
+
+      if (response?.ok) {
+        router.push("/"); // Redirect after login
+        router.refresh();
+        toast.success("Login successful");
+      } else {
+        toast.error("Login failed");
+      }
+      setIsSubmitting(false);
+    } catch (error) {
+      setIsSubmitting(false);
+      toast.error("Login failed");
     }
   };
 
   return (
-    <form action="" onSubmit={handleLogin} className=" space-y-4">
+    <form action="" onSubmit={handleSubmit(handleLogin)} className=" space-y-4">
       <div>
-        <Label>Email</Label>
-        <Input
-          type="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <Label htmlFor="email">Email</Label>
+        <Input type="email" id="email" {...register("email")} />
       </div>
       <div>
-        <Label>Password</Label>
-        <Input
-          type="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <Label htmlFor="password">Password</Label>
+        <Input type="password" id="password" {...register("password")} />
       </div>
       <div className=" text-center">
-        <Button className=" min-w-[150px]">Login</Button>
+        <Button disabled={isSubmitting} className=" min-w-[150px] text-center">
+          {isSubmitting ? <LoaderCircle className=" animate-spin" /> : "Login"}
+        </Button>
       </div>
     </form>
   );

@@ -8,16 +8,18 @@ export default async function RegisterPage() {
   const session = await getServerSession();
   if (session?.user) redirect("/");
   return (
-    <div className="py-5 space-y-5 my-5 container">
-      <h3 className=" text-xl font-semibold text-center">Sign Up</h3>
-      <RegisterForm />
-      <div>
-        <p className=" text-center text-sm">
-          Already have an account?{" "}
-          <Link href={"/auth/login"} className=" text-blue-500">
-            Sign In
-          </Link>
-        </p>
+    <div className=" min-h-[70vh] grid place-items-center">
+      <div className="py-5 space-y-5 my-5 w-[90%] lg:w-[400px]">
+        <h3 className=" text-xl font-semibold text-center">Sign Up</h3>
+        <RegisterForm />
+        <div>
+          <p className=" text-center text-sm">
+            Already have an account?{" "}
+            <Link href={"/auth/login"} className=" text-blue-500">
+              Sign In
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

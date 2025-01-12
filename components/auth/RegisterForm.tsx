@@ -1,11 +1,12 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
 import { Button } from "../ui/button";
 import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { LoaderCircle } from "lucide-react";
 
 interface FormData {
   name: string;
@@ -15,9 +16,12 @@ interface FormData {
 
 export default function RegisterForm() {
   const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const { register, handleSubmit } = useForm<FormData>();
   const onSubmit = async (data: FormData) => {
     try {
+      setIsSubmitting(true);
       const response = await fetch("/api/auth/register", {
         method: "POST",
         body: JSON.stringify(data),
@@ -41,9 +45,11 @@ export default function RegisterForm() {
       } else {
         toast.error(responseData.message);
       }
+      setIsSubmitting(false);
     } catch (error) {
       //   throw new Error("An error occurred during registration.");
-      console.log("An error occurred during registration.");
+      // console.log("An error occurred during registration.");
+      toast.error("An error occurred during registration.");
     }
   };
   return (
@@ -65,7 +71,13 @@ export default function RegisterForm() {
         />
       </div>
       <div className=" text-center">
-        <Button>Submit</Button>
+        <Button disabled={isSubmitting} className=" min-w-[150px] text-center">
+          {isSubmitting ? (
+            <LoaderCircle className=" animate-spin" />
+          ) : (
+            "Sign Up"
+          )}
+        </Button>
       </div>
     </form>
   );

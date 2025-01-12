@@ -14,7 +14,9 @@ export default async function AuthBtn() {
           <Link href={"/auth/login"}>
             <Button variant="outline">Log In</Button>
           </Link>
-          <Button>Sign Up</Button>
+          <Link href={"/auth/register"}>
+            <Button>Sign Up</Button>
+          </Link>
         </div>
       )}
     </div>
