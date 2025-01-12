@@ -46,11 +46,21 @@ export default function LoginForm() {
     <form action="" onSubmit={handleSubmit(handleLogin)} className=" space-y-4">
       <div>
         <Label htmlFor="email">Email</Label>
-        <Input type="email" id="email" {...register("email")} />
+        <Input
+          type="email"
+          id="email"
+          placeholder="user@gmail.com"
+          {...register("email")}
+        />
       </div>
       <div>
         <Label htmlFor="password">Password</Label>
-        <Input type="password" id="password" {...register("password")} />
+        <Input
+          type="password"
+          id="password"
+          placeholder="12345"
+          {...register("password")}
+        />
       </div>
       <div className=" text-center">
         <Button disabled={isSubmitting} className=" min-w-[150px] text-center">

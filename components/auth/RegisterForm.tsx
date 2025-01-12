@@ -56,17 +56,28 @@ export default function RegisterForm() {
     <form action="" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
         <label htmlFor="name">Name</label>
-        <Input type="text" placeholder="Name" {...register("name")} />
+        <Input
+          type="text"
+          id="name"
+          placeholder="Mg Mg"
+          {...register("name")}
+        />
       </div>
       <div>
         <label htmlFor="email">Email</label>
-        <Input type="email" placeholder="Email" {...register("email")} />
+        <Input
+          type="email"
+          id="email"
+          placeholder="user@gmail.com"
+          {...register("email")}
+        />
       </div>
       <div>
         <label htmlFor="password">Password</label>
         <Input
           type="password"
-          placeholder="Password"
+          id="password"
+          placeholder="12345"
           {...register("password")}
         />
       </div>
