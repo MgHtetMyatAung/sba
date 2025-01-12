@@ -8,7 +8,7 @@ export default function HostelGridPhoto({ images }: { images: string[] }) {
   return (
     <div className="max-h-[400px]">
       <Image
-        src={images[0]}
+        src={images[0] || "/imgs/hostel.png"}
         alt={"hostel"}
         width={300}
         height={200}
