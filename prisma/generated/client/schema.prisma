@@ -1,0 +1,111 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id             Int        @id @default(autoincrement())
+  name           String
+  email          String     @unique
+  phone          String?    @unique
+  password       String
+  accessToken    String? // Access token for auth
+  refreshToken   String? // Refresh token for session management
+  tokenExpiresAt DateTime?
+  memberType     MemberType @default(NORMAL) // Enum relationship
+  permissions    String[]   @default([]) // Store permissions as a list of strings
+  bio            String?
+  address        String?
+  avatar         String?
+  cover          String?
+  block          Boolean    @default(false)
+  hostels        Hostel[]
+  jobs           Job[]
+  businesses     Business[]
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}
+
+enum MemberType {
+  NORMAL
+  AGENT
+  COMPANY
+  BUSINESS
+}
+
+model Hostel {
+  id             Int          @id @default(autoincrement())
+  description    String
+  location       String
+  region         String
+  city           String
+  address        String
+  pricePerMonth  Float
+  agent_fee      Float?
+  deposit        Float?
+  contract       ContractType @default(MONTHLY) // Enum relationship
+  contractPeriod Int          @default(1)
+  available      Boolean      @default(true)
+  user           User         @relation(fields: [userId], references: [id])
+  userId         Int
+  images         String[]     @default([]) // Relationship with Image model
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+enum ContractType {
+  MONTHLY
+  YEARLY
+}
+
+model Job {
+  id           Int      @id @default(autoincrement())
+  title        String
+  position     String
+  description  String
+  requirements String
+  salary       Float?
+  location     String
+  address      String
+  company      String
+  image        String
+  phone        String
+  email        String
+  user         User     @relation(fields: [userId], references: [id])
+  userId       Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Business {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  location    String
+  region      String
+  city        String
+  address     String
+  phone       String
+  email       String
+  image       String
+  user        User     @relation(fields: [userId], references: [id])
+  userId      Int
+  openHours   String
+  closeHours  String?
+  website     String?
+  available   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

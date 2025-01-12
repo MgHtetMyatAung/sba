@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "start:dev": "json-server --watch ./data/db.json --port 3001"
+    "start:dev": "json-server --watch ./data/db.json --port 3001",
+    "postinstall": "prisma generate",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
