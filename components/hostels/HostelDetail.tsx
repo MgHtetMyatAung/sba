@@ -18,38 +18,38 @@ import {
 } from "@/components/ui/card";
 import HostelGallery from "./HostelGallery";
 
-export default function HostelDetail({ ...props }) {
+export default function HostelDetail({ hostel }: { hostel: Hostel }) {
   return (
     <Card className="w-full max-w-2xl mx-auto my-8">
       <CardContent className="space-y-4 mt-5">
-        <HostelGallery images={props.images} />
+        <HostelGallery images={hostel.images} />
         <div>
-          <p className="text-gray-700 mb-4">{props.description}</p>
+          <p className="text-gray-700 mb-4">{hostel.description}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex items-center">
               <MapPin className="mr-2 h-5 w-5 text-gray-500" />
-              <span>{props.address}</span>
+              <span>{hostel.address}</span>
             </div>
             <div className="flex items-center">
               <DollarSign className="mr-2 h-5 w-5 text-gray-500" />
-              <span>${props.pricePerMonth} per month</span>
+              <span>${hostel.pricePerMonth} per month</span>
             </div>
             <div className="flex items-center">
               <Briefcase className="mr-2 h-5 w-5 text-gray-500" />
-              <span>Agent fee: ${props.agent_fee}</span>
+              <span>Agent fee: ${hostel.agent_fee}</span>
             </div>
             <div className="flex items-center">
               <Home className="mr-2 h-5 w-5 text-gray-500" />
-              <span>Deposit: ${props.deposit}</span>
+              <span>Deposit: ${hostel.deposit}</span>
             </div>
             <div className="flex items-center">
               <Calendar className="mr-2 h-5 w-5 text-gray-500" />
-              <span>{props.contract} contract</span>
+              <span>{hostel.contract} contract</span>
             </div>
             <div className="flex items-center">
               <Calendar className="mr-2 h-5 w-5 text-gray-500" />
-              <span>{props.contractPeriod} months minimum</span>
+              <span>{hostel.contractPeriod} months minimum</span>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 enum ContractType {
-  MONTHLY = "MONTHLY",
-  YEARLY = "YEARLY",
+  MONTHLY,
+  YEARLY,
 }
 
 interface Hostel {
@@ -13,11 +13,11 @@ interface Hostel {
   pricePerMonth: number;
   agent_fee?: number | null;
   deposit?: number | null;
-  contract: ContractType;
+  contract: string;
   contractPeriod: number;
   available: boolean;
   userId: number;
   images: string[];
-  createdAt: string; // ISO date format
-  updatedAt: string; // ISO date format
+  createdAt: Date; // ISO date format
+  updatedAt: Date; // ISO date format
 }

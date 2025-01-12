@@ -13,9 +13,5 @@ export default async function page({
       id: parseInt(hostelId),
     },
   });
-  return (
-    <div>
-      <HostelDetail {...hostel} />
-    </div>
-  );
+  return <div>{hostel && <HostelDetail hostel={hostel} />}</div>;
 }
