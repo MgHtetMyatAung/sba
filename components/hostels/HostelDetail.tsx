@@ -9,18 +9,12 @@ import {
   Share2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import HostelGallery from "./HostelGallery";
 
 export default function HostelDetail({ hostel }: { hostel: Hostel }) {
   return (
-    <Card className="w-full max-w-2xl mx-auto my-8">
+    <Card className="w-full max-w-2xl mx-auto my-8 border-none">
       <CardContent className="space-y-4 mt-5">
         <HostelGallery images={hostel.images} />
         <div>
@@ -35,20 +29,20 @@ export default function HostelDetail({ hostel }: { hostel: Hostel }) {
             </div>
             <div className="flex items-center text-sm">
               <DollarSign className="mr-2 h-5 w-5 text-gray-500" />
-              <span className=" font-medium mr-1">
-                ${hostel.pricePerMonth}
-              </span>{" "}
               <span> per month</span>
+              <span className=" font-medium ms-1">
+                {hostel.pricePerMonth} MMK
+              </span>{" "}
             </div>
             <div className="flex items-center text-sm">
               <Briefcase className="mr-2 h-5 w-5 text-gray-500" />
               <span>Agent fee: </span>
-              <span className=" font-medium ms-1">${hostel.agent_fee}</span>
+              <span className=" font-medium ms-1">{hostel.agent_fee} MMK</span>
             </div>
             <div className="flex items-center text-sm">
               <Home className="mr-2 h-5 w-5 text-gray-500" />
               <span>Deposit: </span>
-              <span className=" font-medium ms-1">${hostel.deposit}</span>
+              <span className=" font-medium ms-1">{hostel.deposit} MMK</span>
             </div>
             <div className="flex items-center text-sm">
               <Calendar className="mr-2 h-5 w-5 text-gray-500" />
@@ -57,10 +51,10 @@ export default function HostelDetail({ hostel }: { hostel: Hostel }) {
             </div>
             <div className="flex items-center text-sm">
               <Calendar className="mr-2 h-5 w-5 text-gray-500" />
-              <span className=" font-medium mr-1">
+              <span>minimum</span>
+              <span className=" font-medium ms-1">
                 {hostel.contractPeriod} months
               </span>{" "}
-              <span>minimum</span>
             </div>
           </div>
         </div>
