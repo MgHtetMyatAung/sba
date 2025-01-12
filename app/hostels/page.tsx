@@ -5,6 +5,7 @@ import { Search } from "lucide-react";
 import HostelCard from "@/components/hostels/HostelCard";
 import HostelScrollBox from "@/components/hostels/HostelScrollBox";
 import { prisma } from "@/utils/prisma";
+import { Hostel } from "@prisma/client";
 
 export default async function HostelList() {
   // const [priceRange, setPriceRange] = useState([0, 100]);
@@ -91,7 +92,7 @@ export default async function HostelList() {
           </div>
 
           <div className="space-y-6">
-            {hostels.map((hostel) => (
+            {hostels.map((hostel: Hostel) => (
               <HostelCard key={hostel.id} {...hostel} />
             ))}
           </div>
