@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/card";
 import HostelGallery from "./HostelGallery";
 
-export default function HostelDetail({ hostel }: { hostel: Hostel }) {
+export default function HostelDetail({ hostel }: any) {
   return (
     <Card className="w-full max-w-2xl mx-auto my-8">
       <CardContent className="space-y-4 mt-5">

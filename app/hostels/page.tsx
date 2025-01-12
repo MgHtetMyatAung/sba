@@ -4,17 +4,13 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import HostelCard from "@/components/hostels/HostelCard";
 import HostelScrollBox from "@/components/hostels/HostelScrollBox";
-
-// const getHostels = async () => {
-//   const data = await fetch("http://localhost:3001/hostels");
-//   return data.json();
-// };
+import { prisma } from "@/utils/prisma";
 
 export default async function HostelList() {
   // const [priceRange, setPriceRange] = useState([0, 100]);
-  // const hostels = await getHostels();
+  const hostels = await prisma.hostel.findMany();
 
-  // if (!hostels) return <p>Loading ...</p>;
+  if (!hostels) return <p>Loading ...</p>;
 
   return (
     <div className="container px-4 py-8">
@@ -82,7 +78,7 @@ export default async function HostelList() {
           </Card>
         </div> */}
 
-        {/* <div className="">
+        <div className="">
           <div className="mb-6 flex">
             <Input
               type="text"
@@ -95,7 +91,7 @@ export default async function HostelList() {
           </div>
 
           <div className="space-y-6">
-            {hostels.map((hostel: Hostel) => (
+            {hostels.map((hostel) => (
               <HostelCard key={hostel.id} data={hostel} />
             ))}
           </div>
@@ -111,7 +107,7 @@ export default async function HostelList() {
         </div>
         <div className=" fixed bottom-[5px] w-full left-0 right-0">
           <HostelScrollBox />
-        </div> */}
+        </div>
       </div>
     </div>
   );

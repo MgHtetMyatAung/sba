@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import HostelGridPhoto from "./HostelGridPhoto";
 import { useRouter } from "next/navigation";
 
-export default function HostelCard({ data }: { data: Hostel }) {
+export default function HostelCard({ data }: any) {
   const router = useRouter();
   const goToDetail = (id: number) => {
     router.push(`/hostels/${id}`);

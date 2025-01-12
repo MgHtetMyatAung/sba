@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { AppDatas } from "@/constant/config";
+import SessionWrapper from "@/provider/SessionWrapper";
+import { Toaster } from "react-hot-toast";
 
 const roboto = Roboto({
   weight: ["100", "400", "500", "700"],
@@ -22,12 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${roboto.variable} antialiased`}>
-        <Header />
-        <main className=" max-w-[500px] mx-auto">{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <SessionWrapper>
+      <html lang="en">
+        <body className={`${roboto.variable} antialiased`}>
+          <Header />
+          <main className=" max-w-[500px] mx-auto">{children}</main>
+          <Footer />
+          <Toaster position="top-center" reverseOrder={false} />
+        </body>
+      </html>
+    </SessionWrapper>
   );
 }

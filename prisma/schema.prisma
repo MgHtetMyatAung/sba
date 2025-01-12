@@ -9,28 +9,32 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id          Int        @id @default(autoincrement())
-  name        String
-  email       String     @unique
-  phone       String?    @unique
-  password    String
-  memberType  MemberType @default(NORMAL) // Enum relationship
-  permissions String[]   @default([]) // Store permissions as a list of strings
-  bio         String?
-  address     String?
-  avatar      String?
-  cover       String?
-  hostels     Hostel[]
-  jobs        Job[]
-  businesses  Business[]
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  id             Int        @id @default(autoincrement())
+  name           String
+  email          String     @unique
+  phone          String?    @unique
+  password       String
+  accessToken    String? // Access token for auth
+  refreshToken   String? // Refresh token for session management
+  tokenExpiresAt DateTime?
+  memberType     MemberType @default(NORMAL) // Enum relationship
+  permissions    String[]   @default([]) // Store permissions as a list of strings
+  bio            String?
+  address        String?
+  avatar         String?
+  cover          String?
+  block          Boolean    @default(false)
+  hostels        Hostel[]
+  jobs           Job[]
+  businesses     Business[]
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
 }
 
 enum MemberType {
@@ -41,23 +45,23 @@ enum MemberType {
 }
 
 model Hostel {
-  id            Int      @id @default(autoincrement())
-  description   String
-  location      String
-  region        String
-  city          String
-  address       String
-  pricePerMonth Float
-  agent_fee     Float?
-  deposit       Float?
-  contract      ContractType @default(MONTHLY) // Enum relationship
-  contractPeriod Int      @default(1)
-  available     Boolean  @default(true)
-  user          User     @relation(fields: [userId], references: [id])
-  userId        Int
-  images        String[] @default([]) // Relationship with Image model
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id             Int          @id @default(autoincrement())
+  description    String
+  location       String
+  region         String
+  city           String
+  address        String
+  pricePerMonth  Float
+  agent_fee      Float?
+  deposit        Float?
+  contract       ContractType @default(MONTHLY) // Enum relationship
+  contractPeriod Int          @default(1)
+  available      Boolean      @default(true)
+  user           User         @relation(fields: [userId], references: [id])
+  userId         Int
+  images         String[]     @default([]) // Relationship with Image model
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
 }
 
 enum ContractType {
@@ -84,7 +88,7 @@ model Job {
   updatedAt    DateTime @updatedAt
 }
 
-model Business{
+model Business {
   id          Int      @id @default(autoincrement())
   name        String
   description String
@@ -104,5 +108,3 @@ model Business{
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
-
-

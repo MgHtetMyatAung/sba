@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
 import { NavLinks } from "./NavLinks";
 import MobileMenu from "./MobileMenu";
 import Image from "next/image";
 import Link from "next/link";
+import AuthBtn from "./AuthBtn";
 
-export default function Header() {
+export default async function Header() {
   return (
     <header className="bg-white shadow-sm sticky top-0 z-10">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -25,10 +25,7 @@ export default function Header() {
         </nav>
 
         {/* Desktop Auth Buttons */}
-        <div className="hidden md:flex space-x-2">
-          <Button variant="outline">Log In</Button>
-          <Button>Sign Up</Button>
-        </div>
+        <AuthBtn />
 
         <MobileMenu />
       </div>

@@ -22,34 +22,40 @@ export default function HostelGallery({ images }: { images: string[] }) {
         fill
         className="object-cover rounded-md"
       />
-      <Button
-        variant="outline"
-        size="icon"
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80"
-        onClick={prevImage}
-      >
-        <ChevronLeft className="h-4 w-4" />
-        <span className="sr-only">Previous image</span>
-      </Button>
-      <Button
-        variant="outline"
-        size="icon"
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80"
-        onClick={nextImage}
-      >
-        <ChevronRight className="h-4 w-4" />
-        <span className="sr-only">Next image</span>
-      </Button>
-      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
-        {images.map((_, index) => (
-          <div
-            key={index}
-            className={`h-2 w-2 rounded-full ${
-              index === currentImage ? "bg-white" : "bg-white/50"
-            }`}
-          />
-        ))}
-      </div>
+      {images.length > 1 ? (
+        <Button
+          variant="outline"
+          size="icon"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80"
+          onClick={prevImage}
+        >
+          <ChevronLeft className="h-4 w-4" />
+          <span className="sr-only">Previous image</span>
+        </Button>
+      ) : null}
+      {images.length > 1 ? (
+        <Button
+          variant="outline"
+          size="icon"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80"
+          onClick={nextImage}
+        >
+          <ChevronRight className="h-4 w-4" />
+          <span className="sr-only">Next image</span>
+        </Button>
+      ) : null}
+      {images.length > 1 ? (
+        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+          {images.map((_, index) => (
+            <div
+              key={index}
+              className={`h-2 w-2 rounded-full ${
+                index === currentImage ? "bg-white" : "bg-white/50"
+              }`}
+            />
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
