@@ -16,8 +16,8 @@ import Link from "next/link";
 
 export default function HostelDetail({ hostel }: { hostel: Hostel }) {
   return (
-    <Card className="w-full max-w-2xl mx-auto my-8 border-none">
-      <CardContent className="space-y-4 md:mt-5">
+    <Card className="w-full max-w-2xl mx-auto border-none">
+      <CardContent className="space-y-4 md:mt-5 pt-3">
         <Link href={"/hostels"} className=" flex items-center gap-2">
           <ChevronLeft /> Back
         </Link>
