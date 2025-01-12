@@ -15,7 +15,7 @@ export default async function page({
   });
   return (
     <div>
-      <HostelDetail hostel={hostel} />
+      <HostelDetail {...hostel} />
     </div>
   );
 }

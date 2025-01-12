@@ -92,7 +92,7 @@ export default async function HostelList() {
 
           <div className="space-y-6">
             {hostels.map((hostel) => (
-              <HostelCard key={hostel.id} data={hostel} />
+              <HostelCard key={hostel.id} {...hostel} />
             ))}
           </div>
 
