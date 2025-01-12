@@ -1,6 +1,7 @@
 import {
   Briefcase,
   Calendar,
+  ChevronLeft,
   DollarSign,
   Heart,
   Home,
@@ -11,11 +12,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import HostelGallery from "./HostelGallery";
+import Link from "next/link";
 
 export default function HostelDetail({ hostel }: { hostel: Hostel }) {
   return (
     <Card className="w-full max-w-2xl mx-auto my-8 border-none">
-      <CardContent className="space-y-4 mt-5">
+      <CardContent className="space-y-4 md:mt-5">
+        <Link href={"/hostels"} className=" flex items-center gap-2">
+          <ChevronLeft /> Back
+        </Link>
         <HostelGallery images={hostel.images} />
         <div>
           <p className="text-gray-700 mb-4 font-semibold">

@@ -14,7 +14,9 @@ export default async function HostelList() {
 
   return (
     <div className="container px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Find Your Perfect Hostel</h1>
+      <h1 className=" text-xl md:text-3xl font-bold mb-8 text-center">
+        Find Your Perfect Hostel
+      </h1>
 
       <div className="">
         {/* <div className="md:col-span-1">
