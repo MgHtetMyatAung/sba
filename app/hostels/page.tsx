@@ -15,7 +15,7 @@ export default async function HostelList() {
   return (
     <div className="container px-4 py-8">
       <h1 className=" text-xl md:text-3xl font-bold mb-8 text-center">
-        Find Your Perfect Hostel
+        Find Your Perfect Place
       </h1>
 
       <div className="">
@@ -96,15 +96,6 @@ export default async function HostelList() {
             {hostels.map((hostel: Hostel) => (
               <HostelCard key={hostel.id} hostel={hostel} />
             ))}
-          </div>
-
-          <div className="mt-8 flex justify-center">
-            <Button variant="outline" className="mr-2">
-              Previous
-            </Button>
-            <Button variant="outline" className="ml-2">
-              Next
-            </Button>
           </div>
         </div>
         <div className=" fixed bottom-[5px] w-full left-0 right-0">

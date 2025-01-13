@@ -27,5 +27,6 @@ export const config = {
     "/jobs/:path*",
     "/business/:path*",
     "/profile",
+    "/member/:path*",
   ], // Add all your protected paths
 };

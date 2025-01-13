@@ -12,5 +12,8 @@ export const NavLinks = () => (
     <Link href="/business" className="text-gray-600 hover:text-blue-600">
       Services
     </Link>
+    <Link href="/member" className="text-gray-600 hover:text-blue-600">
+      Membership
+    </Link>
   </>
 );
