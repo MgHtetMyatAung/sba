@@ -1,5 +1,5 @@
 "use client";
-import { BadgeCheck, Bell, CreditCard, LogOut, User } from "lucide-react";
+import { BedDouble, Bell, CreditCard, LogOut, User } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-export function DropDownProfile() {
+export function DropDownProfile({ memberType = "" }: { memberType: string }) {
   const { data } = useSession();
   const router = useRouter();
   const goToRoute = (route: string) => router.push(route);
@@ -47,10 +47,15 @@ export function DropDownProfile() {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem className=" cursor-pointer">
-            <BadgeCheck />
-            Account
-          </DropdownMenuItem>
+          {memberType === "AGENT" && (
+            <DropdownMenuItem
+              className=" cursor-pointer"
+              onClick={() => goToRoute("/my-hostels")}
+            >
+              <BedDouble />
+              My Hostels
+            </DropdownMenuItem>
+          )}
           <DropdownMenuItem className=" cursor-pointer">
             <CreditCard />
             Billing
