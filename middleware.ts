@@ -28,5 +28,6 @@ export const config = {
     "/business/:path*",
     "/profile",
     "/member/:path*",
+    "/my-hostels/:path*",
   ], // Add all your protected paths
 };

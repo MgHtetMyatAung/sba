@@ -23,9 +23,10 @@ export default function HostelDetail({ hostel }: { hostel: Hostel }) {
         </Link>
         <HostelGallery images={hostel.images} />
         <div>
-          <p className="text-gray-700 mb-4 font-semibold">
-            {hostel.description}
-          </p>
+          <p
+            className="text-gray-700 mb-4 font-semibold"
+            dangerouslySetInnerHTML={{ __html: hostel.description }}
+          ></p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border rounded-md p-3">
             <div className="flex items-center text-sm">
