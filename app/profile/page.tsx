@@ -5,12 +5,19 @@ import React from "react";
 
 export default async function ProfilePage() {
   const session = await getServerSession();
+  return (
+    <>
+      {session?.user?.email ? <ProfileUi email={session.user.email} /> : null}
+    </>
+  );
+}
+
+async function ProfileUi({ email }: { email?: string }) {
   const profileData = await prisma.user.findUnique({
     where: {
-      email: session?.user?.email!,
+      email: email!,
     },
   });
-  console.log(profileData);
   return (
     <div className=" min-h-[70vh] py-5">
       <div>
