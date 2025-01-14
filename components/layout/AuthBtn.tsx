@@ -6,18 +6,10 @@ import { prisma } from "@/utils/prisma";
 
 export default async function AuthBtn() {
   const session = await getServerSession();
-  const userData = await prisma.user.findUnique({
-    where: {
-      email: session?.user?.email!,
-    },
-    select: {
-      memberType: true,
-    },
-  });
   return (
     <div className="">
       {session?.user ? (
-        <DropDownProfile memberType={userData?.memberType!} />
+        <DropDownBox />
       ) : (
         <div className="hidden md:flex space-x-2">
           <Link href={"/auth/login"}>
@@ -30,4 +22,17 @@ export default async function AuthBtn() {
       )}
     </div>
   );
+}
+
+async function DropDownBox() {
+  const session = await getServerSession();
+  const userData = await prisma.user.findUnique({
+    where: {
+      email: session?.user?.email!,
+    },
+    select: {
+      memberType: true,
+    },
+  });
+  return <DropDownProfile memberType={userData?.memberType!} />;
 }
