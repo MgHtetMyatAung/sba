@@ -27,6 +27,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { LoaderCircle } from "lucide-react";
+import { revalidatePath } from "next/cache";
 
 const contractTypes = ["MONTHLY", "YEARLY"] as const;
 
@@ -70,7 +71,6 @@ export function CreateHostelForm() {
       if (response.ok) {
         toast.success("Hostel created successfully");
         router.push("/my-hostels");
-        router.refresh();
       }
     } catch (error) {
       toast.error("An error occurred while creating the hostel");
